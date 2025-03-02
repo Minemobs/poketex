@@ -7,6 +7,7 @@ pub struct TranslateText {
     pub zh: String,
     pub en: String,
     pub jp: String,
+    pub fr: String,
 }
 
 impl TranslateText {
@@ -22,6 +23,7 @@ impl TranslateText {
                 "en" => &self.en,
                 "zh" => &self.zh,
                 "ja" => &self.jp,
+                "fr" => &self.fr,
                 _ => &self.en,
             };
 
@@ -68,6 +70,15 @@ impl From<TranslateRegionForm> for TranslateText {
                     acc
                 })
             ),
+            fr: format!(
+                "{}{}",
+                &t.name.fr,
+                &forms.clone().fold(String::new(), |mut acc, t| {
+                    acc.push_str(" - ");
+                    acc.push_str(&t.fr);
+                    acc
+                })
+            ),
             jp: format!(
                 "{}{}",
                 &t.name.jp,
@@ -87,56 +98,67 @@ fn translate_region_form<T: AsRef<str>>(form: T) -> TranslateText {
             zh: "阿羅拉的樣子".to_string(),
             en: "Alola Form".to_string(),
             jp: "アローラのすがた".to_string(),
+            fr: "Forme d'Alola".to_string(),
         },
         "Galar" => TranslateText {
             zh: "伽勒爾的樣子".to_string(),
             en: "Galarian form".to_string(),
             jp: "ガラルのすがた".to_string(),
+            fr: "Forme de Galar".to_string(),
         },
         "Hisui" => TranslateText {
             zh: "洗翠的樣子".to_string(),
             en: "Hisuian form".to_string(),
             jp: "ヒスイのすがた".to_string(),
+            fr: "Forme d'Hisui".to_string(),
         },
         "Paldea" => TranslateText {
             zh: "帕底亞的樣子".to_string(),
             en: "Paldea form".to_string(),
             jp: "パルデアのすがた".to_string(),
+            fr: "Forme de Paldea".to_string(),
         },
         "Combat Breed" => TranslateText {
             zh: "鬥戰種".to_string(),
             en: "Combat Breed".to_string(),
             jp: "コンバットしゅ".to_string(),
+            fr: "Race Combative".to_string(),
         },
         "Blaze Breed" => TranslateText {
             zh: "火熾種".to_string(),
             en: "Blaze Breed".to_string(),
             jp: "ブレイズしゅ".to_string(),
+            fr: "Race Flamboyante".to_string(),
         },
         "Aqua Breed" => TranslateText {
             zh: "水瀾種".to_string(),
             en: "Aqua Breed".to_string(),
             jp: "ウォーターしゅ".to_string(),
+            fr: "Race Aquatique".to_string(),
         },
         "Zen Mode" => TranslateText {
             zh: "達摩模式".to_string(),
             en: "Zen Mode".to_string(),
             jp: "ダルマモード".to_string(),
+            fr: "Mode Transe".to_string(),
         },
         "Red-Striped" => TranslateText {
             zh: "紅條紋".to_string(),
             en: "Red-Striped".to_string(),
             jp: "あかすじのすがた".to_string(),
+            fr: "Motif Rouge".to_string(),
         },
         "White-Striped" => TranslateText {
             zh: "白條紋".to_string(),
             en: "White-Striped".to_string(),
             jp: "しろすじのすがた".to_string(),
+            fr: "Motif Blanc".to_string(),
         },
         "Blue-Striped" => TranslateText {
             zh: "藍條紋".to_string(),
             en: "Blue-Striped".to_string(),
             jp: "あおすじのすがた".to_string(),
+            fr: "Motif Bleu".to_string(),
         },
         _ => TranslateText::default(),
     }
